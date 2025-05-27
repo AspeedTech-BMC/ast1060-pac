@@ -3,6 +3,7 @@ PROVIDE(uart = DefaultHandler);
 PROVIDE(gpio = DefaultHandler);
 PROVIDE(scu = DefaultHandler);
 PROVIDE(wdt = DefaultHandler);
+PROVIDE(fmc = DefaultHandler);
 PROVIDE(sgpiom = DefaultHandler);
 PROVIDE(uartdma = DefaultHandler);
 PROVIDE(spi = DefaultHandler);
