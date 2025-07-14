@@ -983,7 +983,7 @@ impl core::fmt::Debug for Timer7 {
 #[doc = "timer interface"]
 pub use self::timer as other_timer7;
 #[doc = "timerg"]
-pub type Timerg = crate::Periph<timerg::RegisterBlock, 0x7e78_2030>;
+pub type Timerg = crate::Periph<timerg::RegisterBlock, 0x7e78_2000>;
 impl core::fmt::Debug for Timerg {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         f.debug_struct("Timerg").finish()
