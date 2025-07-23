@@ -2,22 +2,40 @@
 pub type R = crate::R<I2cfilterthr10Spec>;
 #[doc = "Register `I2CFILTERTHR10` writer"]
 pub type W = crate::W<I2cfilterthr10Spec>;
-#[doc = "Field `TMRCFG` reader - TMR_CFG"]
-pub type TmrcfgR = crate::FieldReader<u32>;
-#[doc = "Field `TMRCFG` writer - TMR_CFG"]
-pub type TmrcfgW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
+#[doc = "Field `SclTimeoutCounter` reader - scl timeout counter"]
+pub type SclTimeoutCounterR = crate::FieldReader<u16>;
+#[doc = "Field `SclTimeoutCounter` writer - scl timeout counter"]
+pub type SclTimeoutCounterW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
+#[doc = "Field `BlockTimeoutCounterForStartStopUsage` reader - block timeout counter for start / stop usage"]
+pub type BlockTimeoutCounterForStartStopUsageR = crate::FieldReader<u16>;
+#[doc = "Field `BlockTimeoutCounterForStartStopUsage` writer - block timeout counter for start / stop usage"]
+pub type BlockTimeoutCounterForStartStopUsageW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
-    #[doc = "Bits 0:31 - TMR_CFG"]
+    #[doc = "Bits 0:15 - scl timeout counter"]
     #[inline(always)]
-    pub fn tmrcfg(&self) -> TmrcfgR {
-        TmrcfgR::new(self.bits)
+    pub fn scl_timeout_counter(&self) -> SclTimeoutCounterR {
+        SclTimeoutCounterR::new((self.bits & 0xffff) as u16)
+    }
+    #[doc = "Bits 16:31 - block timeout counter for start / stop usage"]
+    #[inline(always)]
+    pub fn block_timeout_counter_for_start_stop_usage(
+        &self,
+    ) -> BlockTimeoutCounterForStartStopUsageR {
+        BlockTimeoutCounterForStartStopUsageR::new(((self.bits >> 16) & 0xffff) as u16)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - TMR_CFG"]
+    #[doc = "Bits 0:15 - scl timeout counter"]
     #[inline(always)]
-    pub fn tmrcfg(&mut self) -> TmrcfgW<I2cfilterthr10Spec> {
-        TmrcfgW::new(self, 0)
+    pub fn scl_timeout_counter(&mut self) -> SclTimeoutCounterW<I2cfilterthr10Spec> {
+        SclTimeoutCounterW::new(self, 0)
+    }
+    #[doc = "Bits 16:31 - block timeout counter for start / stop usage"]
+    #[inline(always)]
+    pub fn block_timeout_counter_for_start_stop_usage(
+        &mut self,
+    ) -> BlockTimeoutCounterForStartStopUsageW<I2cfilterthr10Spec> {
+        BlockTimeoutCounterForStartStopUsageW::new(self, 16)
     }
 }
 #[doc = "I2CFLT\\_THRN\\_TMR\n\nYou can [`read`](crate::Reg::read) this register and get [`i2cfilterthr10::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`i2cfilterthr10::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]

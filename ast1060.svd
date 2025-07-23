@@ -35,6 +35,7 @@ permissions and limitations under the License.
 		<fpuPresent>true</fpuPresent>
 		<nvicPrioBits>4</nvicPrioBits>
 		<vendorSystickConfig>false</vendorSystickConfig>
+		<deviceNumInterrupts>256 </deviceNumInterrupts>
 	</cpu>
 	<peripherals>
 
@@ -31292,9 +31293,15 @@ permissions and limitations under the License.
 
 					<fields>
 						<field>
-							<name>TMRCFG</name>
-							<description>TMR_CFG</description>
-							<bitRange>[31:0]</bitRange>
+							<name>SclTimeoutCounter</name>
+							<description>scl timeout counter</description>
+							<bitRange>[15:0]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>BlockTimeoutCounterForStartStopUsage</name>
+							<description>block timeout counter for start / stop usage</description>
+							<bitRange>[31:16]</bitRange>
 							<access>read-write</access>
 						</field>
 					</fields>
@@ -31324,13 +31331,55 @@ permissions and limitations under the License.
 					<size>32</size>
 					<access>read-write</access>
 					<resetValue>0x00000000</resetValue>
-					<resetMask>0xFFFFFFFF</resetMask>
+					<resetMask>0xFFFFFFFD</resetMask>
 
 					<fields>
 						<field>
-							<name>INTS</name>
-							<description>INTS</description>
-							<bitRange>[7:0]</bitRange>
+							<name>WtableFail</name>
+							<description>wtable fail</description>
+							<bitRange>[0:0]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Reserved</name>
+							<description>reserved</description>
+							<bitRange>[1:1]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>SlaveStart</name>
+							<description>slave start</description>
+							<bitRange>[2:2]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>SlaveStop</name>
+							<description>slave stop</description>
+							<bitRange>[3:3]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>AbnMstart</name>
+							<description>abnormal mstart</description>
+							<bitRange>[4:4]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>AbnMstop</name>
+							<description>abnormal mstop</description>
+							<bitRange>[5:5]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>SlaveSclLowTimeout</name>
+							<description>slave scl low timeout</description>
+							<bitRange>[6:6]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>SlaveSdaLowTimeout</name>
+							<description>slave sda low timeout</description>
+							<bitRange>[7:7]</bitRange>
 							<access>read-write</access>
 						</field>
 					</fields>
@@ -31342,14 +31391,62 @@ permissions and limitations under the License.
 					<size>32</size>
 					<access>read-write</access>
 					<resetValue>0x00000000</resetValue>
-					<resetMask>0xFFFFFFFF</resetMask>
+					<resetMask>0x0000FF33</resetMask>
 
 					<fields>
 						<field>
-							<name>STATUS</name>
-							<description>STATUS</description>
-							<bitRange>[31:0]</bitRange>
-							<access>read-only</access>
+							<name>Failfifonoempty</name>
+							<description>fail_fifo_noempty</description>
+							<bitRange>[0:0]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Failfifofull</name>
+							<description>fail_fifo_full</description>
+							<bitRange>[1:1]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Reserved0</name>
+							<description>reserved0</description>
+							<bitRange>[3:2]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Wlisten</name>
+							<description>wlist_en</description>
+							<bitRange>[4:4]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Wtablefail</name>
+							<description>wtable_fail</description>
+							<bitRange>[5:5]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Reserved1</name>
+							<description>reserved1</description>
+							<bitRange>[7:6]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Failrpt</name>
+							<description>fail_rpt</description>
+							<bitRange>[11:8]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Failwpt</name>
+							<description>fail_wpt</description>
+							<bitRange>[15:12]</bitRange>
+							<access>read-write</access>
+						</field>
+						<field>
+							<name>Reserved2</name>
+							<description>reserved2</description>
+							<bitRange>[31:16]</bitRange>
+							<access>read-write</access>
 						</field>
 					</fields>
 				</register>
